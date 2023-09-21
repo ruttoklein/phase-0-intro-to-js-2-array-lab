@@ -1,15 +1,45 @@
 // Write your solution here!
 // index.js
 const cats = ["Milo", "Otis", "Garfield"];
+function destructivelyAppendCat(name) {
+  cats.push(name);
+}
+function destructivelyPrependCat(name) {
+  cats.unshift(name);
+}
 
-// Now you can use the 'cats' array in your code
-// index.js
-const cats = ["Milo", "Otis", "Garfield"];
+function destructivelyRemoveLastCat() {
+  cats.pop();
+}
+function destructivelyRemoveFirstCat() {
+  cats.shift();
+}
 
-// Export the 'cats' array
-module.exports = { cats };
+function appendCat(name) {
+  const newCats = [...cats, name];
+  return newCats;
+}
 
-// indexTest.js
-const { cats } = require('./index'); // Import the 'cats' array from index.js
+function prependCat(name) {
+  const newCats = [name, ...cats];
+  return newCats;
+}
+function removeLastCat() {
+  const newCats = cats.slice(0, -1);
+  return newCats;
+}
 
-// Now you can use the 'cats' array in your tests
+function removeFirstCat() {
+  const newCats = cats.slice(1);
+  return newCats;
+}
+module.exports = {
+  destructivelyAppendCat,
+  destructivelyPrependCat,
+  destructivelyRemoveLastCat,
+  destructivelyRemoveFirstCat,
+  appendCat,
+  prependCat,
+  removeLastCat,
+  removeFirstCat,
+};
